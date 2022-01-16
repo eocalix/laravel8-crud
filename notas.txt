@@ -52,3 +52,6 @@ por ejemplo: upload_tmp_dir = "C:\Users\Eocalix\AppData\Local\Temp"
 - Cuando llamamos una vista desde el controlador, podemos pasarle un array de datos, por ejemplo: $datos['empleados'] = Empleado::paginate(5);
 y en el return: return view('empleado.index', $datos);. Esto permite que en la vista podamos usar: @foreach($empleados as $empleado) y recorrer 
 las propiedades asi: {{ $empleado->id }}.
+
+- Los form HTML solo permiten los métodos de envío GET y POST, por lo que para que Laravel reciba un DELETE o un PUT, debemos poner dentor del 
+formulario: {{ method_field('DELETE')}}
