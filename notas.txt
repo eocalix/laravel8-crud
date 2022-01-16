@@ -1,0 +1,54 @@
+- Al iniciar el proyecto, bastará con crear la base de datos y no se tiene que crear la estructura
+ya que para ello se utilizan las migraciones.
+
+- El archivo .env posee los parámetros de conexión necesarios.
+
+- Se debe hacer una migración inicial para subir las tablas predeterminadas de Laravel, esto ejecutando 
+el comando: php artisan migrate.
+
+- Se puede crear un modelo junto con su controlador ejecutando el comando: 
+php artisan make:model <nombreModelo>
+
+- Podemos además agregar el flag --migration o -m para agregar la migración asi como también 
+--controller o -c para agregar su controlador y --resource o -r para agregar los métodos de CRUD al controlador
+(create, store, show, edit, update y destroy).
+
+- Los Modelos se crean dentro de app/Models, los Controladores dentro de app/Http/Controllers y las Migraciones 
+dentro de database/migrations.
+
+- Podemos configurar aspectos de la base de datos desde config/database.php como podria ser el charset.
+
+- Para efectuar los cambios a tablas, debemos buscar la migración correspondiente y agregar lo que necesitamos.
+
+- Las Vistas se encuentran en la carpeta resources/views.
+
+- Para administrar las Rutas, buscar en routes/web.php.
+
+- Cuando creamos subcarpetas dentro de views, podemos usar por ejemplo empleado.index para navegar en los archivos.
+
+- Desde web.php de routes podemos acceder directamente a vistas o bien a métodos dentro de clases que deben ser usadas.
+
+- Podemos crear rutas de resource que permiten acceder a cada método del controlador indicado.
+
+- Podemos listar las rutas declaradas mediante el comando: php artisan route:list.
+
+- Dentro de los métodos creados por --resource, el create es para mostrar la vista del formulario y store es para 
+procesar los datos que se envíen.
+
+- Dentro de los formularios, usar @csrf como un método de seguridad para que Laravel sepa que la información del formulario 
+viene del mismo sistema ya que esto genera un token dentro de un input:hidden.
+
+- Cuando obtenemos lo enviado por el usuario, usaremos request(), si usamos all() accedemos a todos o podemos usar except() 
+y poner input o un array de inputs para omitirlos.
+
+- Podemos usar el metodo insert para guardar, pero ese no pone valores en los campos created_at y updated_at
+
+- En caso que recibamos un booleano de un checkbox por ejemplo, es mejor usar request->boolean('campo') ya que ese da el 
+tratamiento necesario para convertirlo a true o false.
+
+- Si no funciona el store en el tratamiento del $request, es necesario definir una ruta para archivos temporales en el php.ini, 
+por ejemplo: upload_tmp_dir = "C:\Users\Eocalix\AppData\Local\Temp"
+
+- Cuando llamamos una vista desde el controlador, podemos pasarle un array de datos, por ejemplo: $datos['empleados'] = Empleado::paginate(5);
+y en el return: return view('empleado.index', $datos);. Esto permite que en la vista podamos usar: @foreach($empleados as $empleado) y recorrer 
+las propiedades asi: {{ $empleado->id }}.
