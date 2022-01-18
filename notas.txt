@@ -55,3 +55,6 @@ las propiedades asi: {{ $empleado->id }}.
 
 - Los form HTML solo permiten los métodos de envío GET y POST, por lo que para que Laravel reciba un DELETE o un PUT, debemos poner dentor del 
 formulario: {{ method_field('DELETE')}}
+
+- Podemos crear partes de código en otros archivos e incluirlos con @include('empleado.form'), dónde empleado es la carpeta dentro de view y form es el 
+archivo .blade.php.
